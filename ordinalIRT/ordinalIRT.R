@@ -118,10 +118,16 @@ main <- function(x,
           like.ratio.log <- 0
           for (h in seq(2, H-1)){
             prop.ratio.log <- prop.ratio.log + 
-              log(pnorm((gamma[j,h+2] - gamma[j,h+1])/omega.gamma) -
-                  pnorm((gamma.prop[h] - gamma[j,h+1])/omega.gamma)) -
-              log(pnorm((gamma.prop[h+2] - gamma.prop[h+1])/omega.gamma)-
-                 pnorm((gamma[j,h] - gamma.prop[h+1])/omega.gamma))
+              log(dtruncnorm(x=gamma[j,h],
+                             a=gamma[j,h-1],
+                             b=gamma.prop[h+1],
+                             mean=gamma.prop[h],
+                             sd=omega.gamma)) - 
+              log(dtruncnorm(x=gamma.prop[h],
+                             a=gamma.prop[h-1],
+                             b=gamma[j,h+1],
+                             mean=gamma[j,h],
+                             sd=omega.gamma))  
           }
 
           for (i in seq(1, N)){
