@@ -120,7 +120,7 @@ main <- function(x,
             prop.ratio.log <- prop.ratio.log + 
               log(pnorm((gamma[j,h+2] - gamma[j,h+1])/omega.gamma) -
                   pnorm((gamma.prop[h] - gamma[j,h+1])/omega.gamma)) -
-              log(pnorm((gamma.prop[h+2] - gamma[j,h+1])/omega.gamma)-
+              log(pnorm((gamma.prop[h+2] - gamma.prop[h+1])/omega.gamma)-
                  pnorm((gamma[j,h] - gamma.prop[h+1])/omega.gamma))
           }
 
